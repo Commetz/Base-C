@@ -347,7 +347,7 @@ th {
     justify-content: flex-start;
 }
 
-#abas-aulas .tab-btn {
+#abas-aulas button.tab-btn {
     padding: 8px 16px;
     border: none;
     border-radius: 6px;
@@ -358,14 +358,14 @@ th {
     transition: all 0.2s ease;
 }
 
-#abas-aulas .tab-btn:hover {
+#abas-aulas button.tab-btn:hover {
     background-color: #3f4751;
     transform: translateY(-2px);
 }
 
-#abas-aulas .tab-btn.active {
+#abas-aulas button.tab-btn.active {
     background-color: #2a2f36;
-    color: #3f4751;
+    color: #2a2f36;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     transform: translateY(-2px);
 }
