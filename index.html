@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso Completo de C99</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/imagens/c.png" type="image/png">
+</head>
+<body>
+  <h1>Curso Básico de C99</h1>
+
+  <header class="banner">
+    <nav class="categorias-menu">
+      <a class="categoria ativo" href="/index.html">Aulas</a>
+      <a class="categoria" href="/geral/geral.html">Geral</a>
+      <a class="categoria" href="/iniciante/iniciante.html">Iniciante</a>
+      <a class="categoria" href="/adhoc/adhoc.html">Ad-Hoc</a>
+      <a class="categoria" href="/strings/strings.html">Strings</a>
+      <a class="categoria" href="/matematica/matematica.html">Matemática</a>
+      <a class="categoria" href="/estruturas/estruturas.html">Estruturas</a>
+    </nav>
+  </header>
+
+  <!-- Aula 1 -->
+  <section>
+    <h2>AULA 1 – Sintaxe Básica do C99</h2>
+
+    <h3>Estrutura mínima de um programa</h3>
+    <p>Um programa em C99 sempre tem uma função principal <code>main</code>, onde a execução começa.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf("Olá, Gabriel!\n");
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <h3>Declaração de variáveis</h3>
+    <div class="codigo">
+<pre><code>int idade = 19;       // número inteiro
+float altura = 1.75;  // número real
+char letra = 'G';     // caractere único</code></pre>
+    </div>
+    <p><strong>⚠️ Lembre-se:</strong> C é fortemente tipado — não dá pra trocar o tipo depois.</p>
+
+    <h3>Entrada e saída</h3>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int x;
+    printf("Digite um número: ");
+    scanf("%d", &x); 
+    printf("Você digitou: %d\n", x);
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>Formatos principais do scanf/printf</h3>
+    <table>
+      <tr><th>Tipo</th><th>Descrição</th><th>Formato</th></tr>
+      <tr><td>int</td><td>Inteiro</td><td>%d</td></tr>
+      <tr><td>float</td><td>Real</td><td>%f</td></tr>
+      <tr><td>double</td><td>Real duplo</td><td>%lf</td></tr>
+      <tr><td>char</td><td>Caractere</td><td>%c</td></tr>
+      <tr><td>char[]</td><td>String</td><td>%s</td></tr>
+    </table>
+
+    <h3>Operadores básicos</h3>
+    <table>
+      <tr><th>Categoria</th><th>Exemplos</th><th>Descrição</th></tr>
+      <tr><td>Aritméticos</td><td>+ - * / %</td><td>soma, subtração, multiplicação, divisão, resto</td></tr>
+      <tr><td>Relacionais</td><td>== != &gt; &lt; &gt;= &lt;=</td><td>comparações</td></tr>
+      <tr><td>Lógicos</td><td>&& || !</td><td>operações lógicas</td></tr>
+      <tr><td>Atribuição</td><td>= += -= *= /=</td><td>atribui ou atualiza valores</td></tr>
+    </table>
+
+    <h3>Comentários</h3>
+    <div class="codigo">
+<pre><code>// comentário de uma linha
+
+/*
+comentário
+de várias linhas
+*/</code></pre>
+    </div>
+
+    <h3>Desafio da Aula 1</h3>
+    <p>Escreva um programa que:</p>
+    <ul>
+      <li>Leia dois números inteiros.</li>
+      <li>Mostre a soma, diferença, produto e quociente entre eles (com duas casas decimais).</li>
+    </ul>
+    <p><strong>💡 Dica:</strong> use <code>%.2f</code> para limitar as casas decimais.</p>
+  </section>
+
+    <!-- Aula 2 -->
+  <section>
+    <h2>AULA 2 – Estruturas de Decisão e Repetição</h2>
+
+    <h3>Estruturas de Decisão</h3>
+
+    <h4>✅ if / else</h4>
+    <p>Executa um bloco se a condição for verdadeira, senão outro bloco.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int idade;
+    printf("Digite sua idade: ");
+    scanf("%d", &idade);
+
+    if (idade >= 18) {
+        printf("Maior de idade.\n");
+    } else {
+        printf("Menor de idade.\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <p>⚠️ As chaves <code>{}</code> são opcionais para um bloco de uma linha, mas é recomendado sempre usar.</p>
+
+    <h4>✅ if / else if / else</h4>
+    <p>Usado quando há múltiplas condições possíveis.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int nota;
+    printf("Digite sua nota: ");
+    scanf("%d", &nota);
+
+    if (nota >= 90) {
+        printf("Aprovado com A\n");
+    } else if (nota >= 70) {
+        printf("Aprovado com B\n");
+    } else if (nota >= 50) {
+        printf("Aprovado com C\n");
+    } else {
+        printf("Reprovado\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+
+    <h4>✅ switch / case</h4>
+    <p>Mais eficiente que vários if/else quando se compara um valor fixo.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int opcao;
+    printf("1 - Café\n2 - Chá\n3 - Suco\nEscolha: ");
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+        case 1:
+            printf("Você escolheu café.\n");
+            break;
+        case 2:
+            printf("Você escolheu chá.\n");
+            break;
+        case 3:
+            printf("Você escolheu suco.\n");
+            break;
+        default:
+            printf("Opção inválida.\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <p>⚠️ Nunca esqueça do <code>break</code>, senão o programa continua executando os próximos <code>case</code>.</p>
+
+    <h3>Estruturas de Repetição</h3>
+
+    <h4>🔸 while</h4>
+    <p>Repete enquanto a condição for verdadeira.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int i = 1;
+    while (i <= 5) {
+        printf("%d\n", i);
+        i++; 
+    }
+    return 0;
+}</code></pre>
+    </div>
+
+    <h4>🔸 do / while</h4>
+    <p>Garante pelo menos uma execução, mesmo que a condição seja falsa no início.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int senha;
+    do {
+        printf("Digite a senha (1234): ");
+        scanf("%d", &senha);
+    } while (senha != 1234);
+
+    printf("Acesso permitido!\n");
+    return 0;
+}</code></pre>
+    </div>
+
+    <h4>🔸 for</h4>
+    <p>Mais usado quando sabemos o número de repetições.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    for (int i = 0; i &lt; 5; i++) {
+        printf("Valor de i: %d\n", i);
+    }
+    return 0;
+}</code></pre>
+    </div>
+    <p>Estrutura: <code>for (inicialização; condição; incremento)</code></p>
+
+    <h3>Comandos úteis dentro de laços</h3>
+    <table>
+      <tr><th>Comando</th><th>Função</th></tr>
+      <tr><td>break</td><td>Encerra o laço imediatamente</td></tr>
+      <tr><td>continue</td><td>Pula o restante do laço e vai para a próxima iteração</td></tr>
+    </table>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    for (int i = 1; i &lt;= 10; i++) {
+        if (i == 5) continue; // pula o 5
+        if (i == 8) break;    // para no 8
+        printf("%d ", i);
+    }
+    return 0;
+}</code></pre>
+    </div>
+    <p>Saída: <code>1 2 3 4 6 7</code></p>
+
+    <h3>Desafio da Aula 2</h3>
+    <p>Escreva um programa que:</p>
+    <ul>
+      <li>Leia um número <code>n</code>.</li>
+      <li>Some todos os números de 1 até <code>n</code> usando <code>for</code> e mostre o resultado.</li>
+      <li>Tente reescrever usando <code>while</code>.</li>
+    </ul>
+  </section>
+
+    <!-- Aula 3 -->
+  <section>
+    <h2>AULA 3 – Variáveis Compostas em C99</h2>
+
+    <p>Em C, variáveis compostas permitem armazenar vários valores do mesmo tipo. Os principais são:</p>
+    <ul>
+      <li><strong>Vetores</strong> (arrays unidimensionais)</li>
+      <li><strong>Matrizes</strong> (arrays bidimensionais)</li>
+      <li><strong>Strings</strong> (arrays de char)</li>
+    </ul>
+
+    <h3>🔹 Vetores (arrays)</h3>
+    <p>Um vetor é uma sequência contígua de elementos do mesmo tipo.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int numeros[5]; // vetor de 5 inteiros
+
+    // Leitura
+    for (int i = 0; i &lt; 5; i++) {
+        printf("Digite o número %d: ", i + 1);
+        scanf("%d", &numeros[i]);
+    }
+
+    // Exibição
+    printf("Valores digitados: ");
+    for (int i = 0; i &lt; 5; i++) {
+        printf("%d ", numeros[i]);
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <p>🧩 Importante: os índices começam em 0 e vão até <code>tamanho-1</code>.</p>
+
+    <h4>🔸 Inicialização direta</h4>
+    <div class="codigo">
+<pre><code>int notas[4] = {8, 9, 7, 10};
+int notas2[] = {8, 9, 7, 10}; // compilador deduz o tamanho
+</code></pre>
+    </div>
+
+    <h3>🔹 Matrizes (arrays bidimensionais)</h3>
+    <p>Uma matriz é como uma tabela com linhas e colunas.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int matriz[2][3]; // 2 linhas, 3 colunas
+
+    // Leitura
+    for (int i = 0; i &lt; 2; i++) {
+        for (int j = 0; j &lt; 3; j++) {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    // Exibição
+    printf("\nMatriz digitada:\n");
+    for (int i = 0; i &lt; 2; i++) {
+        for (int j = 0; j &lt; 3; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <p>⚙️ A memória da matriz é contígua, mas indexada em duas dimensões.</p>
+
+    <h3>🔹 Strings</h3>
+    <p>Strings em C são vetores de caracteres terminados por <code>'\0'</code> (caractere nulo).</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    char nome[20]; // até 19 letras + '\0'
+
+    printf("Digite seu nome: ");
+    scanf("%s", nome); // lê até o primeiro espaço
+
+    printf("Olá, %s!\n", nome);
+    return 0;
+}</code></pre>
+    </div>
+    <p>⚠️ <code>scanf("%s")</code> não lê espaços. Para nomes completos, use <code>fgets()</code>:</p>
+    <div class="codigo">
+<pre><code>fgets(nome, 20, stdin);</code></pre>
+    </div>
+
+    <h4>🔸 Manipulação básica de strings</h4>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void) {
+    char palavra1[20] = "C99";
+    char palavra2[20];
+
+    strcpy(palavra2, palavra1);      // copia
+    strcat(palavra2, " é legal");    // concatena
+    printf("%s\n", palavra2);        // exibe
+    printf("Tamanho: %lu\n", strlen(palavra2)); // tamanho
+
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>🔹 Vetores e funções matemáticas</h3>
+    <p>A biblioteca <code>&lt;math.h&gt;</code> traz funções úteis:</p>
+    <table>
+      <tr><th>Função</th><th>Descrição</th></tr>
+      <tr><td>sqrt(x)</td><td>Raiz quadrada</td></tr>
+      <tr><td>pow(x, y)</td><td>Potência</td></tr>
+      <tr><td>fabs(x)</td><td>Valor absoluto (float)</td></tr>
+      <tr><td>ceil(x) / floor(x)</td><td>Arredondamento para cima/baixo</td></tr>
+    </table>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(void) {
+    float valores[3] = {4.0, 9.0, 16.0};
+
+    for (int i = 0; i &lt; 3; i++) {
+        printf("Raiz de %.1f = %.1f\n", valores[i], sqrt(valores[i]));
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>Desafio da Aula 3</h3>
+    <ul>
+      <li>Leia 5 números reais e armazene em um vetor.</li>
+      <li>Calcule a média dos valores.</li>
+      <li>Mostre todos os números maiores que a média.</li>
+      <li>💡 Extra: faça uma matriz 3×3 e calcule a soma da diagonal principal.</li>
+    </ul>
+  </section>
+
+    <!-- Aula 4 -->
+  <section>
+    <h2>AULA 4 – Modularização em C99</h2>
+
+    <p>A modularização é o processo de dividir um programa em partes menores (funções). Isso deixa o código mais limpo, reutilizável e fácil de manter.</p>
+
+    <h3>🔹 Estrutura básica de uma função</h3>
+    <p>
+      <code>tipo_de_retorno nome_da_funcao(parâmetros) { /* corpo */ return valor; }</code>
+    </p>
+
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+// Função que soma dois inteiros
+int soma(int a, int b) {
+    return a + b;
+}
+
+int main(void) {
+    int x = 10, y = 5;
+    int resultado = soma(x, y);
+    printf("Soma = %d\n", resultado);
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>🔹 Tipos de funções</h3>
+    <table>
+      <tr><th>Tipo</th><th>Exemplo</th><th>Descrição</th></tr>
+      <tr><td>void</td><td>void mensagem()</td><td>Não retorna nada</td></tr>
+      <tr><td>com retorno</td><td>int soma()</td><td>Retorna um valor</td></tr>
+      <tr><td>com parâmetros</td><td>float media(float a, float b)</td><td>Recebe valores externos</td></tr>
+    </table>
+
+    <h4>✅ Exemplo: função sem retorno e sem parâmetros</h4>
+    <div class="codigo">
+<pre><code>void saudacao(void) {
+    printf("Olá, Gabriel!\n");
+}
+
+int main(void) {
+    saudacao();
+    return 0;
+}</code></pre>
+    </div>
+
+    <h4>✅ Exemplo: função com retorno e parâmetros</h4>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int quadrado(int n) {
+    return n * n;
+}
+
+int main(void) {
+    printf("Quadrado de 5 = %d\n", quadrado(5));
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>🔹 Escopo de variáveis</h3>
+    <p>Variáveis locais → existem apenas dentro da função. <br>
+       Variáveis globais → declaradas fora de qualquer função.</p>
+
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int global = 10;
+
+void mostrar(void) {
+    int local = 5;
+    printf("Global = %d | Local = %d\n", global, local);
+}
+
+int main(void) {
+    mostrar();
+    return 0;
+}</code></pre>
+    </div>
+    <p>⚠️ Use variáveis globais com moderação — elas dificultam o controle do estado do programa.</p>
+
+    <h3>🔹 Passagem de parâmetros</h3>
+    <p>Por padrão, em C, os parâmetros são passados por valor (uma cópia é feita). Para alterar a variável original, usamos ponteiros (veremos melhor na Aula 5).</p>
+
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+void dobra(int n) {
+    n = n * 2;
+}
+
+int main(void) {
+    int x = 10;
+    dobra(x);
+    printf("%d\n", x); // ainda é 10
+    return 0;
+}</code></pre>
+    </div>
+    <p>A variável não muda no main porque apenas uma cópia foi alterada.</p>
+
+    <h3>🔹 Declaração antecipada (protótipo de função)</h3>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int soma(int a, int b); // protótipo
+
+int main(void) {
+    printf("%d\n", soma(3, 4));
+    return 0;
+}
+
+int soma(int a, int b) {
+    return a + b;
+}</code></pre>
+    </div>
+    <p>Permite organizar funções em arquivos separados.</p>
+
+    <h3>🔹 Arquivos múltiplos</h3>
+    <p>Em projetos grandes, usamos:</p>
+    <ul>
+      <li>Arquivos <code>.c</code> → implementações</li>
+      <li>Arquivos <code>.h</code> → cabeçalhos (declarações e protótipos)</li>
+    </ul>
+
+    <h4>Exemplo de estrutura</h4>
+    <p>Arquivos:</p>
+    <ul>
+      <li>main.c</li>
+      <li>funcoes.c</li>
+      <li>funcoes.h</li>
+    </ul>
+
+    <h4>funcoes.h</h4>
+    <div class="codigo">
+<pre><code>#ifndef FUNCOES_H
+#define FUNCOES_H
+
+int soma(int a, int b);
+void mensagem(void);
+
+#endif</code></pre>
+    </div>
+
+    <h4>funcoes.c</h4>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+#include "funcoes.h"
+
+int soma(int a, int b) {
+    return a + b;
+}
+
+void mensagem(void) {
+    printf("Bem-vindo ao programa modular!\n");
+}</code></pre>
+    </div>
+
+    <h4>main.c</h4>
+    <div class="codigo">
+<pre><code>#include "funcoes.h"
+
+int main(void) {
+    mensagem();
+    printf("Resultado: %d\n", soma(2, 3));
+    return 0;
+}</code></pre>
+    </div>
+
+    <h4>Compilação (terminal)</h4>
+    <div class="codigo">
+<pre><code>gcc main.c funcoes.c -o programa</code></pre>
+    </div>
+
+    <h3>Desafio da Aula 4</h3>
+    <ul>
+      <li>Crie um programa dividido em 3 arquivos (<code>main.c</code>, <code>operacoes.c</code>, <code>operacoes.h</code>).</li>
+      <li>Leia dois números inteiros.</li>
+      <li>Tenha funções para soma, subtração, multiplicação e divisão.</li>
+      <li>Mostre todos os resultados.</li>
+      <li>💡 Extra: adicione uma função que indique qual número é maior.</li>
+    </ul>
+  </section>
+
+    <!-- Aula 5 -->
+  <section>
+    <h2>AULA 5 – Ponteiros e Alocação Dinâmica</h2>
+
+    <h3>🔹 1. O que é um ponteiro?</h3>
+    <p>Um ponteiro é uma variável que guarda o endereço de memória de outra variável.</p>
+
+    <div class="codigo">
+<pre><code>int x = 10;
+int *p = &x;  // p aponta para x
+
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int x = 10;
+    int *p = &x;
+
+    printf("Valor de x: %d\n", x);
+    printf("Endereço de x: %p\n", &x);
+    printf("Valor de p (endereço armazenado): %p\n", p);
+    printf("Valor apontado por p: %d\n", *p);
+
+    *p = 20; // altera o valor de x através do ponteiro
+    printf("Novo valor de x: %d\n", x);
+
+    return 0;
+}</code></pre>
+    </div>
+
+    <p>⚡ Símbolos importantes:</p>
+    <ul>
+      <li><code>&</code> → endereço da variável</li>
+      <li><code>*</code> → valor contido no endereço (desreferenciação)</li>
+    </ul>
+
+    <h3>🔹 2. Ponteiros e funções</h3>
+    <p>Ponteiros permitem modificar variáveis fora da função (passagem por referência).</p>
+
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+void dobrar(int *n) {
+    *n = *n * 2; // acessa e modifica o valor original
+}
+
+int main(void) {
+    int x = 5;
+    dobrar(&x);
+    printf("Valor dobrado: %d\n", x);
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>🔹 3. Ponteiros e vetores</h3>
+    <p>Em C, o nome de um vetor já é um ponteiro para o primeiro elemento.</p>
+
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int v[3] = {10, 20, 30};
+    int *p = v; // equivale a &v[0]
+
+    printf("%d\n", *p);       // 10
+    printf("%d\n", *(p + 1)); // 20
+    printf("%d\n", *(p + 2)); // 30
+    return 0;
+}</code></pre>
+    </div>
+
+    <p>O ponteiro anda na memória conforme o tipo. <code>p + 1</code> vai para o próximo inteiro, não para o próximo byte.</p>
+
+    <h3>🔹 4. Ponteiros para ponteiros</h3>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int x = 42;
+    int *p = &x;
+    int **pp = &p;
+
+    printf("%d\n", **pp); // acessa o valor final
+    return 0;
+}</code></pre>
+    </div>
+
+    <h2>🧩 Parte 2 – Alocação Dinâmica de Memória</h2>
+    <p>Em vez de criar variáveis fixas, você pode pedir memória durante a execução. Biblioteca necessária: <code>&lt;stdlib.h&gt;</code></p>
+
+    <h3>🔹 malloc()</h3>
+    <p>Aloca um bloco de memória sem inicializar.</p>
+    <div class="codigo">
+<pre><code>int *p = malloc(5 * sizeof(int));</code></pre>
+    </div>
+
+    <p>O tamanho deve ser dado em bytes → <code>sizeof(tipo)</code> ajuda a garantir portabilidade.</p>
+
+    <h3>🔹 calloc()</h3>
+    <p>Semelhante ao malloc(), mas inicializa a memória com zero.</p>
+    <div class="codigo">
+<pre><code>int *p = calloc(5, sizeof(int));</code></pre>
+    </div>
+
+    <h3>🔹 realloc()</h3>
+    <p>Redimensiona um bloco já alocado.</p>
+    <div class="codigo">
+<pre><code>p = realloc(p, 10 * sizeof(int));</code></pre>
+    </div>
+
+    <h3>🔹 free()</h3>
+    <p>Libera a memória quando não for mais usada.</p>
+    <div class="codigo">
+<pre><code>free(p);
+p = NULL; // boa prática: evita ponteiro solto</code></pre>
+    </div>
+
+    <h3>🔹 Exemplo completo de vetor dinâmico</h3>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void) {
+    int n;
+    printf("Digite o tamanho do vetor: ");
+    scanf("%d", &n);
+
+    int *v = malloc(n * sizeof(int));
+
+    if (v == NULL) {
+        printf("Erro de alocação!\n");
+        return 1;
+    }
+
+    for (int i = 0; i &lt; n; i++) {
+        v[i] = i + 1;
+    }
+
+    printf("Vetor alocado: ");
+    for (int i = 0; i &lt; n; i++) {
+        printf("%d ", v[i]);
+    }
+
+    free(v);
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>🔹 Matrizes dinâmicas (nível intermediário)</h3>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void) {
+    int linhas = 3, colunas = 3;
+
+    int **matriz = malloc(linhas * sizeof(int*));
+    for (int i = 0; i &lt; linhas; i++) {
+        matriz[i] = malloc(colunas * sizeof(int));
+    }
+
+    // Preenchimento
+    for (int i = 0; i &lt; linhas; i++) {
+        for (int j = 0; j &lt; colunas; j++) {
+            matriz[i][j] = i + j;
+        }
+    }
+
+    // Exibição
+    for (int i = 0; i &lt; linhas; i++) {
+        for (int j = 0; j &lt; colunas; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Liberação
+    for (int i = 0; i &lt; linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>🧩 Desafio da Aula 5</h3>
+    <ul>
+      <li>Peça ao usuário um número <code>n</code>.</li>
+      <li>Alocar dinamicamente um vetor de <code>n</code> posições.</li>
+      <li>Ler os números e calcular a média.</li>
+      <li>Mostrar todos os números acima da média.</li>
+      <li>Liberar a memória no final.</li>
+      <li>💡 Extra: transforme o mesmo programa para usar matriz dinâmica NxM.</li>
+    </ul>
+  </section>
+
+    <!-- Aula 6 -->
+  <section>
+    <h2>AULA 6 – Ordenação e Busca em C99</h2>
+
+    <h3>🔹 1. Busca Linear (Sequencial)</h3>
+    <p>Percorre o vetor do início ao fim até achar o elemento.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int busca_linear(int v[], int n, int x) {
+    for (int i = 0; i &lt; n; i++) {
+        if (v[i] == x) {
+            return i; // retorna o índice onde encontrou
+        }
+    }
+    return -1; // não encontrou
+}
+
+int main(void) {
+    int v[5] = {4, 2, 9, 7, 1};
+    int pos = busca_linear(v, 5, 7);
+
+    if (pos != -1)
+        printf("Encontrado na posição %d\n", pos);
+    else
+        printf("Não encontrado\n");
+
+    return 0;
+}</code></pre>
+    </div>
+    <p>🧩 É simples, mas lento para grandes quantidades de dados: O(n).</p>
+
+    <h3>🔹 2. Busca Binária</h3>
+    <p>Funciona somente em vetores ordenados. Divide o vetor ao meio a cada comparação → muito mais rápida (O(log n)).</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+int busca_binaria(int v[], int n, int x) {
+    int ini = 0, fim = n - 1;
+
+    while (ini &lt;= fim) {
+        int meio = (ini + fim) / 2;
+
+        if (v[meio] == x)
+            return meio;
+        else if (v[meio] &lt; x)
+            ini = meio + 1;
+        else
+            fim = meio - 1;
+    }
+    return -1;
+}
+
+int main(void) {
+    int v[6] = {1, 3, 5, 7, 9, 11};
+    int pos = busca_binaria(v, 6, 7);
+
+    if (pos != -1)
+        printf("Encontrado na posição %d\n", pos);
+    else
+        printf("Não encontrado\n");
+
+    return 0;
+}</code></pre>
+    </div>
+
+    <h3>⚙️ Algoritmos de Ordenação</h3>
+    <p>Agora, vamos ordenar vetores. Esses são os mais clássicos e caem em provas, competições e entrevistas.</p>
+
+    <h4>🔸 1. Bubble Sort</h4>
+    <p>Compara pares vizinhos e troca quando estão fora de ordem. É simples, mas lento (O(n²)).</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+void bubble_sort(int v[], int n) {
+    for (int i = 0; i &lt; n - 1; i++) {
+        for (int j = 0; j &lt; n - i - 1; j++) {
+            if (v[j] &gt; v[j + 1]) {
+                int temp = v[j];
+                v[j] = v[j + 1];
+                v[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main(void) {
+    int v[5] = {5, 3, 1, 4, 2};
+    bubble_sort(v, 5);
+
+    printf("Vetor ordenado: ");
+    for (int i = 0; i &lt; 5; i++)
+        printf("%d ", v[i]);
+    printf("\n");
+
+    return 0;
+}</code></pre>
+    </div>
+
+    <h4>🔸 2. Selection Sort</h4>
+    <p>Seleciona o menor elemento e o coloca na posição correta a cada passo. Também O(n²), mas faz menos trocas que o Bubble.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+void selection_sort(int v[], int n) {
+    for (int i = 0; i &lt; n - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j &lt; n; j++) {
+            if (v[j] &lt; v[min])
+                min = j;
+        }
+        int temp = v[i];
+        v[i] = v[min];
+        v[min] = temp;
+    }
+}</code></pre>
+    </div>
+
+    <h4>🔸 3. Insertion Sort</h4>
+    <p>Constrói o vetor ordenado inserindo um elemento de cada vez na posição correta. Muito eficiente para vetores quase ordenados.</p>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+void insertion_sort(int v[], int n) {
+    for (int i = 1; i &lt; n; i++) {
+        int atual = v[i];
+        int j = i - 1;
+
+        while (j &gt;= 0 &amp;&amp; v[j] &gt; atual) {
+            v[j + 1] = v[j];
+            j--;
+        }
+        v[j + 1] = atual;
+    }
+}</code></pre>
+    </div>
+
+    <h4>🔸 4. Comparando na prática</h4>
+    <div class="codigo">
+<pre><code>#include &lt;stdio.h&gt;
+
+void bubble_sort(int v[], int n);
+void selection_sort(int v[], int n);
+void insertion_sort(int v[], int n);
+
+int main(void) {
+    int v[6] = {8, 3, 7, 4, 9, 1};
+    int opcao;
+
+    printf("1 - Bubble\n2 - Selection\n3 - Insertion\nEscolha: ");
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+        case 1: bubble_sort(v, 6); break;
+        case 2: selection_sort(v, 6); break;
+        case 3: insertion_sort(v, 6); break;
+        default: printf("Opção inválida\n"); return 0;
+    }
+
+    printf("Vetor ordenado: ");
+    for (int i = 0; i &lt; 6; i++)
+        printf("%d ", v[i]);
+    printf("\n");
+    return 0;
+}
+
+// Implementações
+void bubble_sort(int v[], int n) {
+    for (int i = 0; i &lt; n - 1; i++)
+        for (int j = 0; j &lt; n - i - 1; j++)
+            if (v[j] &gt; v[j + 1]) {
+                int temp = v[j];
+                v[j] = v[j + 1];
+                v[j + 1] = temp;
+            }
+}
+
+void selection_sort(int v[], int n) {
+    for (int i = 0; i &lt; n - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j &lt; n; j++)
+            if (v[j] &lt; v[min])
+                min = j;
+        int temp = v[i];
+        v[i] = v[min];
+        v[min] = temp;
+    }
+}
+
+void insertion_sort(int v[], int n) {
+    for (int i = 1; i &lt; n; i++) {
+        int atual = v[i];
+        int j = i - 1;
+        while (j &gt;= 0 &amp;&amp; v[j] &gt; atual) {
+            v[j + 1] = v[j];
+            j--;
+        }
+        v[j + 1] = atual;
+    }
+}</code></pre>
+    </div>
+
+    <h3>🧩 Desafio Final</h3>
+    <ul>
+      <li>Leia n números de um vetor (use malloc).</li>
+      <li>Pergunte ao usuário se quer ordenar (1) ou buscar (2).</li>
+      <li>Se for ordenar → escolha o método e mostre o vetor ordenado.</li>
+      <li>Se for buscar → use busca binária (somente depois de ordenar).</li>
+      <li>💡 Extra: compare o tempo de execução entre Bubble e Insertion usando <code>clock()</code> da <code>&lt;time.h&gt;</code>.</li>
+      <li>Liberar a memória no final.</li>
+    </ul>
+
+  </section>
+</body>

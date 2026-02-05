@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ===== Reset básico ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Body ===== */
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top left, #1f2329 0%, #13161a 100%);
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 0 8%;
+  letter-spacing: 0.3px;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #93c5fd;
+  text-align: center;
+  border-bottom: 3px solid #374151;
+  padding-bottom: 30px;
+  padding-top: 25px; /* espaço acima do texto */
+}
+
+h2 {
+  font-size: 2rem;
+  color: #93c5fd;
+  border-bottom: 2px solid #374151;
+  padding-bottom: 6px;
+  margin: 40px 0 20px 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #60a5fa;
+  margin: 25px 0 10px 0;
+}
+
+h4 {
+  font-size: 1.2rem;
+  color: #93c5fd;
+  margin: 15px 0 8px 0;
+}
+
+/* ===== Paragraphs e listas ===== */
+p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* ===== Links ===== */
+a {
+  color: #93c5fd;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #a5c9ff;
+  text-decoration: underline;
+}
+
+/* ===== Navegação ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 16px 40px;
+  border-radius: 16px;
+  border: 1px solid #2c313a;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  width: fit-content;
+  margin: 0 auto 50px auto;
+}
+
+nav a.categoria {
+  color: #93c5fd;
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease-in-out, color 0.2s;
+}
+
+nav a.categoria:hover {
+  background-color: #2a2f36;
+  color: #a5c9ff;
+}
+
+/* ===== Botão ativo (página atual) ===== */
+nav a.categoria.ativo {
+  background-color: #2a2f36;  /* mesma cor do hover */
+  color: #a5c9ff;             /* mesma cor do hover */
+  box-shadow: 0 0 12px rgba(147, 197, 253, 0.25);
+  transition: all 0.25s ease-in-out;
+}
+
+/* ===== Seções ===== */
+section {
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 60px;
+}
+
+.caixa {
+  background-color: #2a2f36;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.banner h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1.15rem;
+  color: #cbd5e1;
+}
+
+/* ===== Código ===== */
+.codigo, #codigo {
+  background-color: #20242a;
+  border: 1px solid #2f343c;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+#codigo {
+  position: relative;
+  flex: 2 1 700px;
+  max-height: 75vh;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+#codigo:hover {
+  transform: scale(1.02);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.1), 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* Botão copiar código */
+#copiar-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #2a2f36;
+  color: #93c5fd;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out;
+  z-index: 10;
+}
+
+#copiar-btn:hover {
+  background-color: #3b4252;
+  color: #a5c9ff;
+}
+
+/* ===== Tabelas ===== */
+table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #374151;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #374151;
+}
+
+/* ===== Scrollbars ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2a2f36;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3b4252;
+  border-radius: 10px;
+  border: 3px solid #2a2f36;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4c566a;
+}
+
+/* ===== Inputs ===== */
+.search-box input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border-radius: 10px;
+  background-color: #2a2f36;
+  color: #f3f4f6;
+  border: 1px solid #3f4751;
+  font-size: 1rem;
+}
+
+.search-box .lupa {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* ===== Descrição expandida ===== */
+.descricao-expandida {
+  margin-top: 20px;
+  padding: 15px 20px;
+  background-color: #2a2f36;
+  color: #d1d5db;
+  border-radius: 12px;
+  border: 1px solid #3f4751;
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Layout principal ===== */
+.container {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+/* ===== Lista lateral ===== */
+#lista-arquivos {
+  list-style: none;
+  padding: auto;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 62vh;
+  padding-right: 20px;
+}
+
+#lista-arquivos li button {
+  width: 100%;
+  background-color: #2a2f36;
+  color: #f3f4f6;
+  border: 1px solid #3f4751;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: left;
+}
+
+#lista-arquivos li button:hover {
+  background-color: #3b4252;
+  color: #93c5fd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border-radius: 10px;
+  background-color: #2a2f36;
+  color: #f3f4f6;
+  border: 1px solid #3f4751;
+  font-size: 1rem;
+}
+
+.search-box .lupa {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
