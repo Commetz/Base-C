@@ -323,7 +323,7 @@ th {
   width: 100%;
   padding: 12px 40px 12px 16px;
   border-radius: 10px;
-  background-color: #2a2f36;
+  background-color: #3f4751;
   color: #f3f4f6;
   border: 1px solid #3f4751;
   font-size: 1rem;
@@ -336,4 +336,36 @@ th {
   transform: translateY(-50%);
   color: #9ca3af;
   pointer-events: none;
+}
+
+/* ===== Estilo das abas de navegação das aulas ===== */
+#abas-aulas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+    justify-content: flex-start;
+}
+
+#abas-aulas .tab-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2a2f36;
+    color: #93c5fd;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#abas-aulas .tab-btn:hover {
+    background-color: #3f4751;
+    transform: translateY(-2px);
+}
+
+#abas-aulas .tab-btn.active {
+    background-color: #3f4751;
+    color: #3f4751;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
 }
