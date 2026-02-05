@@ -6,9 +6,19 @@
   <title>Base C</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="/imagens/c.png" type="image/png">
+
+  <!-- CSS MÍNIMO e NAMESPACED só para controlar visibilidade das "abas" sem tocar no seu style.css -->
+  <style>
+    .aula { display: none; }
+    .aula.active { display: block; }
+
+    /* Botões de navegação (muito simples, sem override pesado) */
+    #abas-aulas { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin:14px 0; }
+    #abas-aulas .tab-btn { cursor:pointer; padding:6px 10px; border-radius:6px; background:transparent; border:1px solid transparent; }
+  </style>
 </head>
 <body>
-  <h1>Base C<br>Curso Básico de C99</h1>
+  <h1>Base-C<br>Curso Básico de C99</h1>
 
   <header class="banner">
     <nav class="categorias-menu">
